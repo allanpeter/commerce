@@ -3,7 +3,7 @@ version: '3'
 services:
   backend:
     build:
-      context: ./backend/commerce   # Substitua pelo caminho do seu backend
+      context: ./backend   # Substitua pelo caminho do seu backend
     ports:
       - "3000:3000"  # Mapeamento da porta do contêiner para a máquina host
     depends_on:
@@ -11,7 +11,7 @@ services:
 
   frontend:
     build:
-      context: ./frontend/commerce  # Substitua pelo caminho do seu frontend
+      context: ./frontend  # Substitua pelo caminho do seu frontend
     ports:
       - "80:80"  # Mapeamento da porta do contêiner para a máquina host
 
