@@ -7,14 +7,13 @@ import { UserController } from './user/user.controller';
 import { UserService } from './user/user.service';
 import { PlanController } from './plan/plan.controller';
 import { PlanService } from './plan/plan.service';
-import { ConfigModule, ConfigService } from '@nestjs/config'
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { MailService } from './mail/mail.service';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import * as path from 'path';
 
 const templateDir = path.resolve(__dirname, '../src/templates/');
-
 
 @Module({
   imports: [
@@ -55,7 +54,7 @@ const templateDir = path.resolve(__dirname, '../src/templates/');
       inject: [ConfigService],
     }),
   ],
-  controllers: [UserController,PlanController],
-  providers: [UserService,PlanService,MailService],
+  controllers: [UserController, PlanController],
+  providers: [UserService, PlanService, MailService],
 })
 export class AppModule {}
