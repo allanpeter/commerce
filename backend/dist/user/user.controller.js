@@ -35,6 +35,10 @@ let UserController = class UserController {
     async delete(id) {
         await this.userService.delete(Number(id));
     }
+    async verifyZip(zip) {
+        const validate = this.userService.verifyZipCode(zip);
+        return validate;
+    }
 };
 exports.UserController = UserController;
 __decorate([
@@ -72,6 +76,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "delete", null);
+__decorate([
+    (0, common_1.Get)(':id/zip/:zip'),
+    __param(0, (0, common_1.Param)('zip')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "verifyZip", null);
 exports.UserController = UserController = __decorate([
     (0, common_1.Controller)('users'),
     __metadata("design:paramtypes", [user_service_1.UserService])

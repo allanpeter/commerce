@@ -38,4 +38,10 @@ export class UserController {
   async delete(@Param('id') id: string): Promise<void> {
     await this.userService.delete(Number(id));
   }
+
+  @Get(':id/zip/:zip')
+  async verifyZip(@Param('zip') zip: string) {
+    const validate = this.userService.verifyZipCode(zip);
+    return validate
+  }
 }

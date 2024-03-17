@@ -41,6 +41,15 @@ let UserService = class UserService {
     async delete(id) {
         await this.userRepository.delete(id);
     }
+    async verifyZipCode(zip) {
+        const padrao = /^\d{5}-\d{3}$|^\d{5}$/;
+        if (padrao.test(zip)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 };
 exports.UserService = UserService;
 exports.UserService = UserService = __decorate([

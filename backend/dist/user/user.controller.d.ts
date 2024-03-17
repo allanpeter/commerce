@@ -8,4 +8,5 @@ export declare class UserController {
     create(user: User): Promise<User>;
     update(id: string, updateUserDto: Partial<User>): Promise<User>;
     delete(id: string): Promise<void>;
+    verifyZip(zip: string): Promise<boolean>;
 }

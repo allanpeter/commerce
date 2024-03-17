@@ -8,4 +8,5 @@ export declare class UserService {
     create(user: User): Promise<User>;
     update(id: number, updateUserDto: Partial<User>): Promise<User>;
     delete(id: number): Promise<void>;
+    verifyZipCode(zip: string): Promise<boolean>;
 }

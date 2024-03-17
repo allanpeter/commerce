@@ -1,0 +1,34 @@
+[
+    {
+      "id": 1,
+      "name": "Plano Básico",
+      "speed": "50 Mbps",
+      "price": 49.99,
+      "description": "Ideal para uso doméstico moderado",
+      "extra": []
+    },
+    {
+      "id": 2,
+      "name": "Plano Intermediário",
+      "speed": "100 Mbps",
+      "price": 79.99,
+      "description": "Perfeito para streaming e jogos online",
+      "extra": ["Netflix"]
+    },
+    {
+      "id": 3,
+      "name": "Plano Avançado",
+      "speed": "200 Mbps",
+      "price": 99.99,
+      "description": "Para famílias e empresas com alto consumo de dados",
+      "extra": ["Netflix", "Prime Video", "Paramount+"]
+    },
+    {
+      "id": 4,
+      "name": "Plano Premium",
+      "speed": "500 Mbps",
+      "price": 149.99,
+      "description": "A melhor escolha para quem busca alta performance e estabilidade",
+      "extra": ["Netflix", "Prime Video", "Paramount+", "Disney+"]
+    }
+  ]
