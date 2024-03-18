@@ -1,27 +1,20 @@
-import Header from './components/Header';
-import Footer from './components/Footer';
+
 import Home from './components/Home'
 import Plans from './components/Plans';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import {  Route, Switch, Router } from 'react-router-dom';
+import UserRegister from './components/UserRegister';
 
 function App() {
  
     return(
-      <BrowserRouter>
-      <Routes>
+      <Router>
+      <Switch>
           <Route path='/' Component={Home} />
           <Route path='/plans' Component={Plans} />
-      </Routes>
-      </BrowserRouter>
+          <Route path='/register' Component={UserRegister} />
+      </Switch>
+      </Router>
     )
-  
-  // return (
-  //   <div>
-  //     <Header />
-  //         <Home />
-  //     <Footer />
-  //   </div>
-  // );
 }
 
 export default App

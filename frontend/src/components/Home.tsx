@@ -3,18 +3,20 @@ import Modal from './Modal';
 import validarCep from '../api/validaCep'; 
 import Layout from './Layouts';
 import InputMask from 'react-input-mask';
+import { useNavigate } from 'react-router-dom'
+
 
 const Home: React.FC = () => {
   const [cep, setCep] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isValidCep, setIsValidCep] = useState(false);
-  const [redirectToPlan, setRedirect] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleValidateCep = async () => {
     const isValid = await validarCep(cep);
     if (isValid) {
-      setIsValidCep(true);
-      setRedirect(true);
+      navigate('/plans')
     } else {
       setIsValidCep(false);
       setIsModalOpen(true);
@@ -26,10 +28,9 @@ const Home: React.FC = () => {
   };
 
   return (
-    <Layout>
-      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      <div className="flex flex-col items-center justify-center h-full bg-gray-100">
         <div className="bg-white rounded-lg p-8 shadow-md">
-          <h2 className="text-2xl font-bold mb-4">Digite o seu CEP</h2>
+          <h2 className="text-2xl font-bold mb-4">Preencha o CEP para verificar os planos disponiveis em sua localidade</h2>
           <div className="flex items-center">
             <InputMask
               mask="99999-999"
@@ -56,9 +57,7 @@ const Home: React.FC = () => {
         )}
 
         {isValidCep && <p className="mt-4 text-green-600">CEP válido! Redirecionando...</p>}
-        {redirectToPlan && <RedirectFunction to="/plans" />}
       </div>
-    </Layout>
   );
 };
 

@@ -1,6 +1,4 @@
 import React, { useState , useEffect  } from 'react';
-import Header from './Header';
-import Footer from './Footer';
 import listPlans from '../api/listPlans';
 import PlanInterface from '../interfaces/plan.interface';
 
@@ -22,9 +20,7 @@ const Plans: React.FC = () => {
   }, []); 
   
   return (
-    <div>
-    <Header />
-    <div className="bg-gray-100 min-h-screen flex flex-col justify-center">
+      <div className="bg-gray-100 flex flex-col justify-center">
       <div className="container mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {loading ? (
@@ -55,8 +51,6 @@ const Plans: React.FC = () => {
         </div>
       </div>
     </div>
-      <Footer />
-      </div>
   );
 };
 
