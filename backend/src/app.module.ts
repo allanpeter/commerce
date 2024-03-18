@@ -41,10 +41,10 @@ const templateDir = path.resolve(__dirname, '../src/templates/');
           },
         },
         template: {
-          dir: templateDir, // Caminho para o diretório dos templates
-          adapter: new HandlebarsAdapter(), // Usando o adaptador Handlebars
+          dir: templateDir,
+          adapter: new HandlebarsAdapter(),
           options: {
-            strict: true, // Opções adicionais do Handlebars, se necessário
+            strict: true,
           },
         },
         defaults: {

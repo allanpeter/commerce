@@ -1,6 +1,6 @@
 const validarCep = async (cep: string): Promise<boolean> => {
   try {
-    const response = await fetch(`http://localhost:3000/users/1/zip/${cep}`);
+    const response = await fetch(`http://localhost:3000/users/zip/${cep}`);
     if (!response.ok) {
       throw new Error("Erro ao validar o CEP");
     }

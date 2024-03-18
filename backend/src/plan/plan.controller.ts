@@ -14,41 +14,35 @@ import { MailService } from 'src/mail/mail.service';
 export class PlanController {
   constructor(
     private readonly planService: PlanService,
-    private readonly mailService: MailService
-
-    ) {}
+    private readonly mailService: MailService,
+  ) {}
 
   @Get()
   async findAll() {
-    return this.planService.findAll()
+    return this.planService.findAll();
   }
   @Post('send-email')
-  async sendEmail(
-    @Body() body: string,
-    ){
-    return this.mailService.sendWelcomeEmail(body)
+  async sendEmail(@Body() body: string) {
+    return this.mailService.sendWelcomeEmail(body);
   }
 
   @Get(':id')
   async findById(@Param('id') id: number) {
-    console.log(id)
+    console.log(id);
     return this.planService.findById(id);
   }
 
   @Post()
-  async create(@Body() body){
-    return this.planService.createPlan(body)
+  async create(@Body() body) {
+    return this.planService.createPlan(body);
   }
 
   @Patch()
-  async update(@Body() body){
-    return this.planService.updatePlan(body.id, body)
+  async update(@Body() body) {
+    return this.planService.updatePlan(body.id, body);
   }
   @Delete(':id')
   async delete(@Param('id') id: number) {
-    return this.planService.deletePlan(id)
- 
+    return this.planService.deletePlan(id);
   }
-
-
 }

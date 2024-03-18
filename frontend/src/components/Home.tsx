@@ -8,11 +8,13 @@ const Home: React.FC = () => {
   const [cep, setCep] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isValidCep, setIsValidCep] = useState(false);
+  const [redirectToPlan, setRedirect] = useState(false);
 
   const handleValidateCep = async () => {
     const isValid = await validarCep(cep);
     if (isValid) {
       setIsValidCep(true);
+      setRedirect(true);
     } else {
       setIsValidCep(false);
       setIsModalOpen(true);
@@ -48,12 +50,13 @@ const Home: React.FC = () => {
 
         {isModalOpen && (
           <Modal onClose={closeModal}>
-            <h2 className="text-xl font-bold mb-4">CEP Inválido</h2>
-            <p className="text-gray-700">Por favor, insira um CEP válido.</p>
+            <h2 className="text-xl font-bold mb-4">Nao temos cobertura para o CEP selecionado</h2>
+            <p className="text-gray-700">Por favor, insira outro CEP.</p>
           </Modal>
         )}
 
         {isValidCep && <p className="mt-4 text-green-600">CEP válido! Redirecionando...</p>}
+        {redirectToPlan && <RedirectFunction to="/plans" />}
       </div>
     </Layout>
   );

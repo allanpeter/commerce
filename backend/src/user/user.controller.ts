@@ -42,7 +42,7 @@ export class UserController {
     await this.userService.delete(Number(id));
   }
 
-  @Get(':id/zip/:zip')
+  @Get('zip/:zip')
   async verifyZip(@Param('zip') zip: string) {
     const validate = this.userService.verifyZipCode(zip);
     return validate;

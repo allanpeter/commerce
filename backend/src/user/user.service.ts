@@ -35,13 +35,13 @@ export class UserService {
     await this.userRepository.delete(id);
   }
 
-  async verifyZipCode(zip: string){
-     const padrao: RegExp = /^\d{5}-\d{3}$|^\d{5}$/;
-    
-     if (padrao.test(zip)) {
-         return true;
-     } else {
-         return false;
-     } 
+  async verifyZipCode(zip: string) {
+    const padrao: RegExp = /^\d{5}-\d{3}$|^\d{5}$/;
+
+    if (padrao.test(zip)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

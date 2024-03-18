@@ -77,7 +77,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "delete", null);
 __decorate([
-    (0, common_1.Get)(':id/zip/:zip'),
+    (0, common_1.Get)('zip/:zip'),
     __param(0, (0, common_1.Param)('zip')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),

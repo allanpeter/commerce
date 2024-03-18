@@ -1,22 +1,19 @@
 import { Injectable } from '@nestjs/common';
-import * as plans from '../assets/plans.json'
 import * as fs from 'fs';
 import * as path from 'path';
-import { ConfigService } from '@nestjs/config';
-
 
 @Injectable()
 export class PlanService {
   private readonly dataFilePath: string;
-  constructor  ( ) {
-    this.dataFilePath = path.resolve(__dirname,'../assets','plans.json');
+  constructor() {
+    this.dataFilePath = path.resolve(__dirname, '../assets', 'plans.json');
   }
   private readDataFile(): any[] {
     try {
       const rawData = fs.readFileSync(this.dataFilePath);
       return JSON.parse(rawData.toString());
     } catch (error) {
-      console.error('Erro ao ler o arquivo de dados:', error);
+      console.error('Error to read datafile:', error);
       return [];
     }
   }
@@ -25,7 +22,7 @@ export class PlanService {
     try {
       fs.writeFileSync(this.dataFilePath, JSON.stringify(data, null, 2));
     } catch (error) {
-      console.error('Erro ao escrever no arquivo de dados:', error);
+      console.error('Error to write on datafile:', error);
     }
   }
 
@@ -33,11 +30,11 @@ export class PlanService {
     return this.readDataFile();
   }
 
-  findById(id: number) {    
+  findById(id: number) {
     const data = this.readDataFile();
-    return data.find(item => item.id == id);
+    return data.find((item) => item.id == id);
   }
-  
+
   createPlan(newItem: any) {
     const data = this.readDataFile();
     const id = data.length > 0 ? data[data.length - 1].id + 1 : 1;
@@ -49,28 +46,26 @@ export class PlanService {
 
   updatePlan(id: number, updatedItem: any) {
     const data = this.readDataFile();
-    const index = data.findIndex(item => item.id == id);
+    const index = data.findIndex((item) => item.id == id);
     if (index !== -1) {
       const updatedData = [...data];
       updatedData[index] = { ...updatedData[index], ...updatedItem };
       this.writeDataFile(updatedData);
       return updatedData[index];
     } else {
-      return null; 
-  }
-}
-
-  deletePlan(id: number) {
-    const data = this.readDataFile();
-    const index = data.findIndex(item => item.id == id);
-    if (index !== -1) {
-      const updatedData = data.filter(item => item.id != id);
-      this.writeDataFile(updatedData);
-      return true;
-    } else {
-      return false; 
+      return null;
     }
   }
 
-
+  deletePlan(id: number) {
+    const data = this.readDataFile();
+    const index = data.findIndex((item) => item.id == id);
+    if (index !== -1) {
+      const updatedData = data.filter((item) => item.id != id);
+      this.writeDataFile(updatedData);
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
