@@ -45,8 +45,8 @@ exports.AppModule = AppModule = __decorate([
                         host: 'smtp.gmail.com',
                         port: 587,
                         auth: {
-                            user: 'piripoexperience@gmail.com',
-                            pass: 'grao fsft sonj edwz',
+                            user: 'email',
+                            pass: 'password',
                         },
                     },
                     template: {

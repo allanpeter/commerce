@@ -30,7 +30,10 @@ export class UserController {
   }
 
   @Put(':id')
-  async update(@Param('id') id: string, @Body() updateUserDto: Partial<User>): Promise<User> {
+  async update(
+    @Param('id') id: string,
+    @Body() updateUserDto: Partial<User>,
+  ): Promise<User> {
     return this.userService.update(Number(id), updateUserDto);
   }
 
@@ -42,6 +45,6 @@ export class UserController {
   @Get(':id/zip/:zip')
   async verifyZip(@Param('zip') zip: string) {
     const validate = this.userService.verifyZipCode(zip);
-    return validate
+    return validate;
   }
 }
