@@ -6,7 +6,7 @@ import * as path from 'path';
 export class PlanService {
   private readonly dataFilePath: string;
   constructor() {
-    this.dataFilePath = path.resolve(__dirname, '../', 'plans.json');
+    this.dataFilePath = path.resolve('../backend/src/assets/', 'plans.json');
   }
   private readDataFile(): any[] {
     try {
@@ -27,6 +27,7 @@ export class PlanService {
   }
 
   findAll() {
+    console.log(this.readDataFile());
     return this.readDataFile();
   }
 
