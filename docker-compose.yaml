@@ -3,23 +3,23 @@ version: '3'
 services:
   backend:
     build:
-      context: ./backend   # Substitua pelo caminho do seu backend
+      context: ./backend  
     ports:
-      - "3000:3000"  # Mapeamento da porta do contêiner para a máquina host
+      - "3000:3000"  
     depends_on:
-      - database  # Dependência do banco de dados
+      - database  
 
   frontend:
     build:
-      context: ./frontend  # Substitua pelo caminho do seu frontend
+      context: ./frontend 
     ports:
-      - "80:80"  # Mapeamento da porta do contêiner para a máquina host
+      - "80:80" 
 
   database:
     build:
-      context: ./database  # Substitua pelo caminho do diretório com o Dockerfile do MariaDB
+      context: ./database  
     environment:
-      MYSQL_ROOT_PASSWORD: '123456'  # Variável de ambiente para a senha do root do banco
+      MYSQL_ROOT_PASSWORD: '123456'  
     ports:
       - "3306:3306"
   adminer:

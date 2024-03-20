@@ -27,6 +27,15 @@ let UserService = class UserService {
     async findById(id) {
         return this.userRepository.findOneBy({ id });
     }
+    async findLastUser() {
+        const users = this.userRepository.find();
+        console.log((await users).pop());
+        return (await users).pop();
+    }
+    async findUserByName(name) {
+        const users = this.userRepository.findOneBy({ name });
+        return users;
+    }
     async create(user) {
         return this.userRepository.save(user);
     }

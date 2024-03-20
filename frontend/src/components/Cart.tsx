@@ -15,7 +15,7 @@ const Cart: React.FC = () => {
     const [selectedExtras, setSelectedExtras] = useState<string[]>([]);
     const [totalPrice, setTotalPrice] = useState<number>(plan.price);
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string>('Cartão de Crédito');
-    const [user, setUser] = useState<string>(parsedParams.userId); // Defina o tipo correto para o usuário
+    const [user, setUser] = useState<string>(parsedParams.userName); 
 
   const navigate = useNavigate()
 
@@ -24,7 +24,6 @@ const Cart: React.FC = () => {
         try {
             const fetchedPlan = await getPlanById(Number(parsedParams.planId));
             setPlan(fetchedPlan);
-            // Atualize o preço total se necessário
             setTotalPrice(plan.price);
         } catch (error) {
             console.error("Erro ao buscar plano:", error);
@@ -33,7 +32,7 @@ const Cart: React.FC = () => {
 
     const fetchUser = async () => {
         try {
-            const fetchedUser = await UserAPI.getUserById(parsedParams.userId);
+            const fetchedUser = await UserAPI.getUserByName(parsedParams.userName);
             setUser(fetchedUser);
         } catch (error) {
             console.error("Erro ao buscar usuário:", error);
@@ -42,7 +41,7 @@ const Cart: React.FC = () => {
 
     fetchPlan();
     fetchUser();
-}, [parsedParams.planId, parsedParams.userId]);
+}, [parsedParams.planId,parsedParams.userName]);
 
     const calculateTotalPrice = () => {
         let total = plan ? plan.price : 0;

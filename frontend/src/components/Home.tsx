@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Modal from './Modal';
 import validarCep from '../api/validaCep'; 
-import Layout from './Layouts';
 import InputMask from 'react-input-mask';
 import { useNavigate } from 'react-router-dom'
 

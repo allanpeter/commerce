@@ -23,7 +23,7 @@ const ThankYouPage: React.FC = () => {
             }
         };
         sendEmail();
-    }, []);
+    }, [parsedParams.email,parsedParams.name]);
 
     return (
         <div className="flex justify-center items-center h-[80%]">

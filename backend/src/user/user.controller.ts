@@ -19,16 +19,20 @@ export class UserController {
     return this.userService.findAll();
   }
 
+  @Get('/find-last')
+  async findLast(): Promise<User> {
+    return this.userService.findLastUser();
+  }
+
+  @Get('/name/:name')
+  async findByName(@Param('name') name: string): Promise<User> {
+    return this.userService.findUserByName(name);
+  }
+
   @Get(':id')
   async findById(@Param('id') id: string): Promise<User> {
     return this.userService.findById(Number(id));
   }
-
-  // @Get('find-last')
-  // async findLast(): Promise<User> {
-  //   console.log('opaa');
-  //   return this.userService.findLastUser();
-  // }
 
   @Post()
   async create(@Body() user: User): Promise<User> {

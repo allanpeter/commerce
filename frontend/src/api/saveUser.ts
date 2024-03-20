@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default class UserAPI {
-  public saveUser = async (name: string, email: string, age: number) => {
+  static saveUser = async (name: string, email: string, age: number) => {
     try {
       const response = await axios.post(`http://localhost:3000/users`, {
         name,
@@ -29,5 +29,19 @@ export default class UserAPI {
       throw error;
     }
   };
-  static saveUser: any;
+
+  static getUserByName = async (name: string) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:3000/users/name/${name}`
+      );
+      if (!response.data) {
+        throw new Error("User not found");
+      }
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching user by Name", error);
+      throw error;
+    }
+  };
 }

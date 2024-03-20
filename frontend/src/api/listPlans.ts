@@ -1,4 +1,4 @@
-import PlanInterface from "../interfaces/plan.interface";
+import { PlanInterface } from "../interfaces/plan.interface";
 
 const listPlans = async (): Promise<PlanInterface[]> => {
   try {

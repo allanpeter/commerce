@@ -18,10 +18,16 @@ export class UserService {
     return this.userRepository.findOneBy({ id });
   }
 
-  // async findLastUser(): Promise<User> {
-  //   console.log('entrou');
-  //   return await this.userRepository.findOne({ order: { name: 'DESC' } });
-  // }
+  async findLastUser(): Promise<User> {
+    const users = this.userRepository.find();
+    console.log((await users).pop());
+    return (await users).pop();
+  }
+
+  async findUserByName(name: string): Promise<User> {
+    const users = this.userRepository.findOneBy({ name });
+    return users;
+  }
 
   async create(user: User): Promise<User> {
     return this.userRepository.save(user);

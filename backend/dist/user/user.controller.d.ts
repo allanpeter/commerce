@@ -4,6 +4,8 @@ export declare class UserController {
     private readonly userService;
     constructor(userService: UserService);
     findAll(): Promise<User[]>;
+    findLast(): Promise<User>;
+    findByName(name: string): Promise<User>;
     findById(id: string): Promise<User>;
     create(user: User): Promise<User>;
     update(id: string, updateUserDto: Partial<User>): Promise<User>;

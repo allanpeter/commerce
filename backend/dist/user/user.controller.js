@@ -23,6 +23,12 @@ let UserController = class UserController {
     async findAll() {
         return this.userService.findAll();
     }
+    async findLast() {
+        return this.userService.findLastUser();
+    }
+    async findByName(name) {
+        return this.userService.findUserByName(name);
+    }
     async findById(id) {
         return this.userService.findById(Number(id));
     }
@@ -47,6 +53,19 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)('/find-last'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "findLast", null);
+__decorate([
+    (0, common_1.Get)('/name/:name'),
+    __param(0, (0, common_1.Param)('name')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "findByName", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),

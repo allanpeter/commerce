@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { listPlans } from '../api/listPlans';
-import PlanInterface from '../interfaces/plan.interface';
+import {PlanInterface} from '../interfaces/plan.interface';
 import { useNavigate } from 'react-router-dom';
 
 const Plans: React.FC = () => {
   const [planos, setPlanos] = useState<PlanInterface[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const navigate = useNavigate(); // uncommented useNavigate
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const fetchPlanos = async () => {
@@ -22,7 +22,7 @@ const Plans: React.FC = () => {
   }, []);
 
   const selectedPlan = async (id: number) => {
-    navigate(`/register?planId=${id}`); // navigate to register route with planId
+    navigate(`/register?planId=${id}`); 
   };
 
   return (
@@ -51,7 +51,6 @@ const Plans: React.FC = () => {
                     </div>
                   )}
                 </div>
-                {/* Added onClick event to call selectedPlan function */}
                 <button className="bg-blue-500 text-white py-2 px-4 rounded-md mt-4" onClick={() => selectedPlan(plano.id)}>Selecionar</button>
               </div>
             ))

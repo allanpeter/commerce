@@ -1,4 +1,4 @@
-interface PlanInterface {
+export interface PlanInterface {
   id: number;
   name: string;
   speed: string;
@@ -6,5 +6,3 @@ interface PlanInterface {
   description: string;
   extra: string[];
 }
-
-export default PlanInterface;
