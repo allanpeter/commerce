@@ -51,6 +51,7 @@ temp/
 # Ignore sensitive or environment-specific information
 secrets.json
 .env.local
+.env.production
 
 # Ignore user-specific files
 .idea/
