@@ -9,11 +9,11 @@ services:
     depends_on:
       - database  
 
-  frontend:
-    build:
-      context: ./frontend 
-    ports:
-      - "80:80" 
+  # frontend:
+  #   build:
+  #     context: ./frontend 
+  #   ports:
+  #     - "80:5173" 
 
   database:
     build:

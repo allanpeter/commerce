@@ -5,7 +5,6 @@ FROM mariadb:latest
 ENV MYSQL_ROOT_PASSWORD='123456'
 
 # Defina a variável de ambiente MYSQL_DATABASE se desejar criar um banco de dados padrão
-# ENV MYSQL_DATABASE=nome_do_banco
+ENV MYSQL_DATABASE=commerce
 
-# Expor a porta 3306 (a porta padrão do MariaDB)
-EXPOSE 3306
+COPY ./commerce.sql /docker-entrypoint-initdb.d/
