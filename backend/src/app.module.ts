@@ -4,7 +4,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './user/user.entity';
 import { UserController } from './user/user.controller';
-import { UserService } from './user/UserService';
+import { UserService } from './user/user.service';
 import { PlanController } from './plan/plan.controller';
 import { PlanService } from './plan/plan.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -12,7 +12,6 @@ import { MailerModule } from '@nestjs-modules/mailer';
 import { MailService } from './mail/mail.service';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import * as path from 'path';
-// import dotenv from 'dotenv';
 import dotenv from 'dotenv';
 
 dotenv.config();

@@ -7,7 +7,7 @@ import {
   Put,
   Delete,
 } from '@nestjs/common';
-import { UserService } from './UserService';
+import { UserService } from './user.service';
 import { User } from './user.entity';
 
 @Controller('users')

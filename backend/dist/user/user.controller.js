@@ -14,7 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
 const common_1 = require("@nestjs/common");
-const UserService_1 = require("./UserService");
+const user_service_1 = require("./user.service");
 const user_entity_1 = require("./user.entity");
 let UserController = class UserController {
     constructor(userService) {
@@ -85,6 +85,6 @@ __decorate([
 ], UserController.prototype, "verifyZip", null);
 exports.UserController = UserController = __decorate([
     (0, common_1.Controller)('users'),
-    __metadata("design:paramtypes", [UserService_1.UserService])
+    __metadata("design:paramtypes", [user_service_1.UserService])
 ], UserController);
 //# sourceMappingURL=user.controller.js.map

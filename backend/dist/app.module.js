@@ -37,7 +37,7 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const user_entity_1 = require("./user/user.entity");
 const user_controller_1 = require("./user/user.controller");
-const UserService_1 = require("./user/UserService");
+const user_service_1 = require("./user/user.service");
 const plan_controller_1 = require("./plan/plan.controller");
 const plan_service_1 = require("./plan/plan.service");
 const config_1 = require("@nestjs/config");
@@ -92,7 +92,7 @@ exports.AppModule = AppModule = __decorate([
             }),
         ],
         controllers: [user_controller_1.UserController, plan_controller_1.PlanController],
-        providers: [UserService_1.UserService, plan_service_1.PlanService, mail_service_1.MailService],
+        providers: [user_service_1.UserService, plan_service_1.PlanService, mail_service_1.MailService],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map

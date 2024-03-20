@@ -1,4 +1,4 @@
-import { UserService } from './UserService';
+import { UserService } from './user.service';
 import { User } from './user.entity';
 export declare class UserController {
     private readonly userService;
