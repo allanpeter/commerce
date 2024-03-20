@@ -1,15 +1,17 @@
-import React, { useState , useEffect  } from 'react';
-import listPlans from '../api/listPlans';
+import React, { useState, useEffect } from 'react';
+import { listPlans } from '../api/listPlans';
 import PlanInterface from '../interfaces/plan.interface';
+import { useNavigate } from 'react-router-dom';
 
 const Plans: React.FC = () => {
   const [planos, setPlanos] = useState<PlanInterface[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const navigate = useNavigate(); // uncommented useNavigate
 
   useEffect(() => {
     const fetchPlanos = async () => {
       try {
-        const response = await listPlans(); 
+        const response = await listPlans();
         setPlanos(response);
         setLoading(false);
       } catch (error) {
@@ -17,11 +19,16 @@ const Plans: React.FC = () => {
       }
     };
     fetchPlanos();
-  }, []); 
-  
+  }, []);
+
+  const selectedPlan = async (id: number) => {
+    navigate(`/register?planId=${id}`); // navigate to register route with planId
+  };
+
   return (
-      <div className="bg-gray-100 flex flex-col justify-center">
-      <div className="container mx-auto">
+    <div className="bg-gray-100 flex flex-col items-center justify-center">
+      <h2 className="font-bold text-2xl pt-10">Confira os planos disponíveis para sua região</h2>
+      <div className="p-32 w-full">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {loading ? (
             <p className="text-center">Carregando...</p>
@@ -44,7 +51,8 @@ const Plans: React.FC = () => {
                     </div>
                   )}
                 </div>
-                <button className="bg-blue-500 text-white py-2 px-4 rounded-md mt-4">Selecionar</button>
+                {/* Added onClick event to call selectedPlan function */}
+                <button className="bg-blue-500 text-white py-2 px-4 rounded-md mt-4" onClick={() => selectedPlan(plano.id)}>Selecionar</button>
               </div>
             ))
           )}

@@ -20,7 +20,7 @@ export class UserService {
 
   async findLastUser(): Promise<User> {
     console.log('entrou');
-    return await this.userRepository.findOne({ order: { name: 'DESC' } });
+    return this.userRepository.findOne(order, { id: 'DESC' });
   }
 
   async create(user: User): Promise<User> {
@@ -42,14 +42,12 @@ export class UserService {
 
   // async verifyZipCode(zip: string) {
   //   const padrao: RegExp = /^\d{5}-\d{3}$|^\d{5}$/;
-
   //   if (padrao.test(zip)) {
   //     return true;
   //   } else {
   //     return false;
   //   }
   // }
-
   async verifyZipCode(zip: string) {
     console.log(zip);
     if (zip === '32010-770') return true;

@@ -14,7 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
 const common_1 = require("@nestjs/common");
-const user_service_1 = require("./user.service");
+const UserService_1 = require("./UserService");
 const user_entity_1 = require("./user.entity");
 let UserController = class UserController {
     constructor(userService) {
@@ -25,6 +25,10 @@ let UserController = class UserController {
     }
     async findById(id) {
         return this.userService.findById(Number(id));
+    }
+    async findLast() {
+        console.log('opaa');
+        return this.userService.findLastUser();
     }
     async create(user) {
         return this.userService.create(user);
@@ -54,6 +58,12 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "findById", null);
+__decorate([
+    (0, common_1.Get)('find-last'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "findLast", null);
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
@@ -85,6 +95,6 @@ __decorate([
 ], UserController.prototype, "verifyZip", null);
 exports.UserController = UserController = __decorate([
     (0, common_1.Controller)('users'),
-    __metadata("design:paramtypes", [user_service_1.UserService])
+    __metadata("design:paramtypes", [UserService_1.UserService])
 ], UserController);
 //# sourceMappingURL=user.controller.js.map

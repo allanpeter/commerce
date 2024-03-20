@@ -7,7 +7,7 @@ import {
   Put,
   Delete,
 } from '@nestjs/common';
-import { UserService } from './user.service';
+import { UserService } from './UserService';
 import { User } from './user.entity';
 
 @Controller('users')
@@ -22,6 +22,12 @@ export class UserController {
   @Get(':id')
   async findById(@Param('id') id: string): Promise<User> {
     return this.userService.findById(Number(id));
+  }
+
+  @Get('find-last')
+  async findLast(): Promise<User> {
+    console.log('opaa');
+    return this.userService.findLastUser();
   }
 
   @Post()

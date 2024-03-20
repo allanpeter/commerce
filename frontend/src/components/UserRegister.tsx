@@ -1,19 +1,36 @@
 import React, { useState } from 'react';
-import saveUser from '../api/saveUser';
+import { useLocation, useNavigate } from 'react-router-dom';
+import UserAPI from '../api/saveUser';
+
 
 const UserRegister: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [age, setAge] = useState('');
 
-  const handleCadastro = () => {
-    const savingUser = saveUser(name,email,+age)
-    console.log(savingUser)
-  };
+  const navigate = useNavigate()
 
+  const location = useLocation();
+
+  const queryParams = new URLSearchParams(location.search);
+  const parsedParams = Object.fromEntries(queryParams);
+
+  const handleCadastro = async () => {
+    try {
+      // const user = await UserAPI.saveUser(name, email,+age)
+      // const userId = user.id
+      // alert(userId)
+       navigate(`/cart?planId=${parsedParams.planId}&userName=${name}`)
+      
+    } catch (error) {
+      console.error(error)
+    }
+  //  navigate(`/cart?planId=${parsedParams.planId}`)
+  };
+  
   return (
       <div className="bg-gray-100 flex flex-col justify-center">
-        <div className="mx-auto p-8 w-full">
+        <div className="mx-auto p-32 w-full">
           <form onSubmit={handleCadastro} className="bg-white rounded-lg shadow-md p-4">
             <h2 className="text-2xl font-bold mb-4">Cadastro de Usuário</h2>
             <div className="mb-4">

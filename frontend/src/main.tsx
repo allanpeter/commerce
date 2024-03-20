@@ -10,6 +10,8 @@ import Plans from './components/Plans.tsx'
 import UserRegister from './components/UserRegister.tsx'
 import './index.css'
 import Layout from './components/Layouts.tsx'
+import ThankYouPage from './components/ThankYou.tsx'
+import Cart from './components/Cart.tsx'
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <UserRegister />,
+  },
+  {
+    path: "/thank-you",
+    element: <ThankYouPage />,
+  },
+  {
+    path: "/cart",
+    element: <Cart />,
   },
 ]);
 

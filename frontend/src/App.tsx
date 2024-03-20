@@ -1,8 +1,8 @@
-
 import Home from './components/Home'
 import Plans from './components/Plans';
 import {  Route, Switch, Router } from 'react-router-dom';
 import UserRegister from './components/UserRegister';
+import ThankYouPage from './components/ThankYou';
 
 function App() {
  

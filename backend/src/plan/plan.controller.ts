@@ -23,6 +23,7 @@ export class PlanController {
   }
   @Post('send-email')
   async sendEmail(@Body() body: string) {
+    console.log(body);
     return this.mailService.sendWelcomeEmail(body);
   }
 

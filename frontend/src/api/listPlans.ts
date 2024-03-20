@@ -13,4 +13,19 @@ const listPlans = async (): Promise<PlanInterface[]> => {
     return [];
   }
 };
-export default listPlans;
+
+const getPlanById = async (planId: number): Promise<PlanInterface | null> => {
+  try {
+    const response = await fetch(`http://localhost:3000/plans/${planId}`);
+    if (!response.ok) {
+      throw new Error("Error to fetch plan");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error to fetch plan:", error);
+    return null;
+  }
+};
+
+export { listPlans, getPlanById };

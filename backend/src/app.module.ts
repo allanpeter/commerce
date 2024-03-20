@@ -4,7 +4,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './user/user.entity';
 import { UserController } from './user/user.controller';
-import { UserService } from './user/user.service';
+import { UserService } from './user/UserService';
 import { PlanController } from './plan/plan.controller';
 import { PlanService } from './plan/plan.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -36,8 +36,8 @@ const templateDir = path.resolve(__dirname, '../src/templates/');
           host: 'smtp.gmail.com',
           port: 587,
           auth: {
-            user: 'email',
-            pass: 'password',
+            user: 'piripoexperience@gmail.com',
+            pass: 'grao fsft sonj edwz',
           },
         },
         template: {

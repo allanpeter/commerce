@@ -27,7 +27,6 @@ export class PlanService {
   }
 
   findAll() {
-    console.log(this.readDataFile());
     return this.readDataFile();
   }
 

@@ -27,6 +27,10 @@ let UserService = class UserService {
     async findById(id) {
         return this.userRepository.findOneBy({ id });
     }
+    async findLastUser() {
+        console.log('entrou');
+        return await this.userRepository.findOne({ order: { name: 'DESC' } });
+    }
     async create(user) {
         return this.userRepository.save(user);
     }
@@ -42,13 +46,10 @@ let UserService = class UserService {
         await this.userRepository.delete(id);
     }
     async verifyZipCode(zip) {
-        const padrao = /^\d{5}-\d{3}$|^\d{5}$/;
-        if (padrao.test(zip)) {
+        console.log(zip);
+        if (zip === '32010-770')
             return true;
-        }
-        else {
-            return false;
-        }
+        return false;
     }
 };
 exports.UserService = UserService;

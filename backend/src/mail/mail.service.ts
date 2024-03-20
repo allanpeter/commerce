@@ -6,7 +6,7 @@ export class MailService {
   constructor(private readonly mailerService: MailerService) {}
 
   async sendWelcomeEmail(body: any) {
-    return await this.mailerService.sendMail({
+    const sentEmail = await this.mailerService.sendMail({
       to: body.email,
       subject: 'Parabéns pela aquisicao do Plano!',
       template: 'parabens',
@@ -14,5 +14,6 @@ export class MailService {
         name: body.name,
       },
     });
+    console.log(sentEmail);
   }
 }
