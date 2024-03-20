@@ -5,7 +5,6 @@ export declare class UserController {
     constructor(userService: UserService);
     findAll(): Promise<User[]>;
     findById(id: string): Promise<User>;
-    findLast(): Promise<User>;
     create(user: User): Promise<User>;
     update(id: string, updateUserDto: Partial<User>): Promise<User>;
     delete(id: string): Promise<void>;

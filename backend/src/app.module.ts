@@ -12,6 +12,10 @@ import { MailerModule } from '@nestjs-modules/mailer';
 import { MailService } from './mail/mail.service';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import * as path from 'path';
+// import dotenv from 'dotenv';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const templateDir = path.resolve(__dirname, '../src/templates/');
 
@@ -19,11 +23,11 @@ const templateDir = path.resolve(__dirname, '../src/templates/');
   imports: [
     TypeOrmModule.forRoot({
       type: 'mariadb',
-      host: '127.0.0.1',
-      port: 3306,
-      username: 'root',
-      password: '123456',
-      database: 'commerce',
+      host: process.env.DATABASE_URL,
+      port: +process.env.DATABASE_PORT,
+      username: process.env.DATABASE_USERNAME,
+      password: process.env.DATABASE_PASS,
+      database: process.env.DATABASE_NAME,
       entities: [User],
       synchronize: true,
     }),
@@ -36,8 +40,8 @@ const templateDir = path.resolve(__dirname, '../src/templates/');
           host: 'smtp.gmail.com',
           port: 587,
           auth: {
-            user: 'piripoexperience@gmail.com',
-            pass: 'grao fsft sonj edwz',
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS,
           },
         },
         template: {

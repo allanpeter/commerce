@@ -26,10 +26,6 @@ let UserController = class UserController {
     async findById(id) {
         return this.userService.findById(Number(id));
     }
-    async findLast() {
-        console.log('opaa');
-        return this.userService.findLastUser();
-    }
     async create(user) {
         return this.userService.create(user);
     }
@@ -58,12 +54,6 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "findById", null);
-__decorate([
-    (0, common_1.Get)('find-last'),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", Promise)
-], UserController.prototype, "findLast", null);
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),

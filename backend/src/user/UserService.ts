@@ -18,10 +18,10 @@ export class UserService {
     return this.userRepository.findOneBy({ id });
   }
 
-  async findLastUser(): Promise<User> {
-    console.log('entrou');
-    return this.userRepository.findOne(order, { id: 'DESC' });
-  }
+  // async findLastUser(): Promise<User> {
+  //   console.log('entrou');
+  //   return this.userRepository.findOne(order, { id: 'DESC' });
+  // }
 
   async create(user: User): Promise<User> {
     return this.userRepository.save(user);
