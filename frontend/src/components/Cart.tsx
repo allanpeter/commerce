@@ -25,7 +25,8 @@ const Cart: React.FC = () => {
         try {
             const fetchedPlan = await getPlanById(Number(parsedParams.planId));
             setPlan(fetchedPlan);
-            setTotalPrice(plan ? plan.price : 50);
+            // @ts-ignore
+            setTotalPrice(plan.price);
         } catch (error) {
             console.error("Erro ao buscar plano:", error);
         }
