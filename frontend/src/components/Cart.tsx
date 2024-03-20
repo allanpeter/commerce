@@ -4,6 +4,7 @@ import { getPlanById } from '../api/listPlans';
 import { PlanInterface } from '../interfaces/plan.interface';
 import { useNavigate } from 'react-router-dom';
 import UserAPI from '../api/saveUser';
+import { UserInterface } from '../interfaces/user.interface';
 
 
 const Cart: React.FC = () => {
@@ -11,11 +12,11 @@ const Cart: React.FC = () => {
     const queryParams = new URLSearchParams(location.search);
     const parsedParams = Object.fromEntries(queryParams);
 
-    const [plan, setPlan] = useState<PlanInterface | null>(parsedParams.planId);
+    const [plan, setPlan] = useState<PlanInterface | null>();
     const [selectedExtras, setSelectedExtras] = useState<string[]>([]);
-    const [totalPrice, setTotalPrice] = useState<number>(plan.price);
+    const [totalPrice, setTotalPrice] = useState<number>();
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string>('Cartão de Crédito');
-    const [user, setUser] = useState<string>(parsedParams.userName); 
+    const [user, setUser] = useState<UserInterface>(); 
 
   const navigate = useNavigate()
 
@@ -24,7 +25,7 @@ const Cart: React.FC = () => {
         try {
             const fetchedPlan = await getPlanById(Number(parsedParams.planId));
             setPlan(fetchedPlan);
-            setTotalPrice(plan.price);
+            setTotalPrice(plan ? plan.price : 50);
         } catch (error) {
             console.error("Erro ao buscar plano:", error);
         }
@@ -47,6 +48,7 @@ const Cart: React.FC = () => {
         let total = plan ? plan.price : 0;
         selectedExtras.forEach(extra => {
             total += 15;
+            console.log(extra)
         });
         setTotalPrice(total);
     };
@@ -64,7 +66,7 @@ const Cart: React.FC = () => {
 
     const handlePayment = () => {
 
-        navigate(`/thank-you?name=${user.name}&email=${user.email}`)
+        navigate(`/thank-you?name=${user ? user.name : "teste"}&email=${user ? user.email : "teste@gmail.com"}`)
 
     };
 
@@ -77,7 +79,7 @@ const Cart: React.FC = () => {
             <h2 className="text-2xl font-bold mb-4">Carrinho</h2>
             <div className="mb-4">
                 <p className="font-bold">Usuário:</p>
-                <p>{user.name}</p>
+                <p>{user ? user.name : "teste"}</p>
             </div>
             <div className="mb-4">
                 <p className="font-bold">Plano Selecionado:</p>
@@ -111,7 +113,7 @@ const Cart: React.FC = () => {
             </div>
             <div className="mb-4">
                 <p className="font-bold">Total:</p>
-                <p>R$ {!totalPrice ? plan.price : totalPrice}</p>
+                <p>R$ {!totalPrice ? plan ? plan.price: 50 : totalPrice}</p>
             </div>
             <div className="mb-4">
                 <p className="font-bold">Método de Pagamento:</p>
